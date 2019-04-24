@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+    <property name="charset" value="UTF-8"/>
+    <!-- 检查property文件中是否有相同的key -->
+    <module name="Translation"/>
+    <!-- 文件长度不超过1000行 -->
+    <module name="FileLength">
+        <property name="max" value="1000"/>
+    </module>
+    <!-- 每个java文件一个语法树 -->
+    <module name="TreeWalker">
+        <!-- 检查方法和构造函数的javadoc -->
+        <module name="JavadocMethod">
+            <property name="scope" value="public"/>
+            <!-- <property name="allowMissingParamTags" value="true"/> -->
+            <!-- <property name="allowMissingThrowsTags" value="true"/> -->
+            <!-- <property name="allowMissingReturnTag" value="true"/> -->
+            <property name="minLineCount" value="2"/>
+            <!-- <property name="allowedAnnotations" value="Override, Test"/> -->
+            <!-- <property name="allowThrowsTagsForSubclasses" value="true"/> -->
+            <message key="javadoc.missing" value="方法或构造函数，缺少Javadoc注释。"/>
+        </module>
+        <!-- 检查类和接口的javadoc。默认不检查author和version tags -->
+        <module name="JavadocType">
+            <property name="allowUnknownTags" value="true"/>
+            <message key="javadoc.missing" value="类或接口，缺少Javadoc注释。"/>
+        </module>
+        <!-- 检查变量的javadoc -->
+        <module name="JavadocVariable">
+            <!-- 所有的check都有一个severity属性，用它来指定check的level -->
+            <property name="severity" value="warning"/>
+            <message key="javadoc.missing" value="变量，缺少Javadoc注释。"/>
+        </module>
+        <!-- 检查javadoc的格式 -->
+        <module name="JavadocStyle">
+            <property name="checkFirstSentence" value="false"/>
+        </module>
+        <!-- 方法不超过20行 -->
+        <module name="MethodLength">
+            <property name="tokens" value="METHOD_DEF" />
+            <property name="max" value="20" />
+        </module>
+        <!-- 方法的参数个数不超过6个。 并且不对构造方法进行检查-->
+        <module name="ParameterNumber">
+            <property name="max" value="6" />
+            <property name="ignoreOverriddenMethods" value="true"/>
+            <property name="tokens" value="METHOD_DEF" />
+        </module>
+    </module>
+</module>
